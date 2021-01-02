@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="82affcd0-1acc-40ab-af79-f9a1cbd06db4" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="firstFlow" doc:id="6fbd3d6e-001d-499a-810c-4c994feca57a" >
+		<http:listener doc:name="Listener" doc:id="c7fcf71e-b6d3-4079-a394-afbe7271284d" config-ref="HTTP_Listener_config" path="/123" allowedMethods="POST"/>
+		<logger level="INFO" doc:name="Logger" doc:id="d79565bf-a591-4898-9917-5aea7f92a3fb" message='"Test API is success"'/>
+		<set-payload value='#["First Application is Running successfully"]' doc:name="Set Payload" doc:id="ff5a070c-77d3-49c8-adba-584ce421a6b9" />
+	</flow>
+</mule>
